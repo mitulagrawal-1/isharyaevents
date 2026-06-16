@@ -1,0 +1,155 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand palette */
+  --color-marigold: var(--marigold);
+  --color-saffron: var(--saffron);
+  --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+  --color-charcoal: var(--charcoal);
+  --color-sand: var(--sand);
+  --color-maroon: var(--maroon);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand colors */
+  --marigold: oklch(0.78 0.17 70);   /* #f59e0b */
+  --saffron: oklch(0.64 0.21 38);    /* #ea580c */
+  --gold: oklch(0.55 0.13 60);       /* #b45309 */
+  --ivory: oklch(0.985 0.02 95);     /* #fdfcf0 */
+  --charcoal: oklch(0.20 0.01 50);   /* #1c1917 */
+  --sand: oklch(0.985 0.045 100);    /* #fefce8 */
+  --maroon: oklch(0.38 0.13 25);     /* #581c1c */
+
+  --background: var(--ivory);
+  --foreground: var(--charcoal);
+  --card: var(--ivory);
+  --card-foreground: var(--charcoal);
+  --popover: var(--ivory);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--saffron);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--charcoal);
+  --muted: var(--sand);
+  --muted-foreground: oklch(0.45 0.02 50);
+  --accent: var(--marigold);
+  --accent-foreground: var(--charcoal);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.78 0.17 70 / 15%);
+  --input: oklch(0.78 0.17 70 / 25%);
+  --ring: var(--saffron);
+}
+
+.dark {
+  --background: var(--charcoal);
+  --foreground: var(--ivory);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+@utility marigold-gradient {
+  background:
+    radial-gradient(circle at 10% 20%, oklch(0.78 0.17 70 / 0.10) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, oklch(0.64 0.21 38 / 0.10) 0%, transparent 50%);
+}
+
+@utility ornamental-border {
+  border-image: linear-gradient(to right, transparent, var(--color-gold), transparent) 1;
+  border-bottom-width: 1px;
+}
+
+/* Custom styles for luxury touch and scroll behavior */
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+/* Marquee infinite scroll keyframes */
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-left 35s linear infinite;
+}
+
+/* Ensure the marquee pauses on hover for readability */
+.hover-pause-marquee:hover .animate-marquee,
+.animate-marquee:hover {
+  animation-play-state: paused !important;
+}
+
+/* Royal pattern background */
+.bg-royal-mandala {
+  background-image: radial-gradient(var(--color-gold) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Subtle sway animation for hanging flowers */
+@keyframes flower-sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+.animate-flower-sway {
+  animation: flower-sway 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
