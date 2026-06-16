@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -48,13 +47,13 @@
   --radius: 0.5rem;
 
   /* Brand colors */
-  --marigold: oklch(0.78 0.17 70);   /* #f59e0b */
-  --saffron: oklch(0.64 0.21 38);    /* #ea580c */
-  --gold: oklch(0.55 0.13 60);       /* #b45309 */
-  --ivory: oklch(0.985 0.02 95);     /* #fdfcf0 */
-  --charcoal: oklch(0.20 0.01 50);   /* #1c1917 */
-  --sand: oklch(0.985 0.045 100);    /* #fefce8 */
-  --maroon: oklch(0.38 0.13 25);     /* #581c1c */
+  --marigold: oklch(0.78 0.17 70); /* #f59e0b */
+  --saffron: oklch(0.64 0.21 38); /* #ea580c */
+  --gold: oklch(0.55 0.13 60); /* #b45309 */
+  --ivory: oklch(0.985 0.02 95); /* #fdfcf0 */
+  --charcoal: oklch(0.2 0.01 50); /* #1c1917 */
+  --sand: oklch(0.985 0.045 100); /* #fefce8 */
+  --maroon: oklch(0.38 0.13 25); /* #581c1c */
 
   --background: var(--ivory);
   --foreground: var(--charcoal);
@@ -96,8 +95,8 @@
 
 @utility marigold-gradient {
   background:
-    radial-gradient(circle at 10% 20%, oklch(0.78 0.17 70 / 0.10) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, oklch(0.64 0.21 38 / 0.10) 0%, transparent 50%);
+    radial-gradient(circle at 10% 20%, oklch(0.78 0.17 70 / 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, oklch(0.64 0.21 38 / 0.1) 0%, transparent 50%);
 }
 
 @utility ornamental-border {
@@ -109,7 +108,7 @@
 @layer utilities {
   .scrollbar-none {
     scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none; /* IE and Edge */
   }
   .scrollbar-none::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
@@ -144,12 +143,16 @@
 
 /* Subtle sway animation for hanging flowers */
 @keyframes flower-sway {
-  0%, 100% { transform: rotate(-1.5deg); }
-  50% { transform: rotate(1.5deg); }
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
 }
 
 .animate-flower-sway {
   animation: flower-sway 6s ease-in-out infinite;
   transform-origin: top center;
 }
-
